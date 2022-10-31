@@ -1,0 +1,25 @@
+{
+  "name": "fv-1-language",
+  "displayName": "FV-1 language",
+  "description": "Development support for FV-1 chip assembly language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.72.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "fv-1-assembly",
+      "aliases": ["FV-1 Assembly", "fv-1-assembly"],
+      "extensions": ["spn"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "fv-1-assembly",
+      "scopeName": "source.spn",
+      "path": "./syntaxes/fv-1-assembly.tmLanguage.json"
+    }]
+  }
+}

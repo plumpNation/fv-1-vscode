@@ -13,10 +13,16 @@
     }
   ],
   "repository": {
+    "comments": {
+      "patterns": [{
+        "name": "comment.line.fv-1-assembly",
+        "match": "^;.+"
+      }]
+    },
     "keywords": {
       "patterns": [{
         "name": "keyword.control.fv-1-assembly",
-        "match": "\\b(if|while|for|return)\\b"
+        "match": "(?i)\\b(equ|mem|rda|rmpa|wra|wrap|rdax|rdfx|wrax|wrhx|wrlx|maxx|absa|mulx|log|exp|sof|and|or|xor|skp|wlds|wldr|jam|cho|nop|not|clr)\\b"
       }]
     },
     "strings": {

@@ -1,12 +1,25 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "FV-1 Assembly",
+  "scopeName": "source.spn",
+  "fileTypes": [
+    "spn"
+  ],
   "patterns": [
     {
       "include": "#comments"
     },
     {
-      "include": "#keywords"
+      "include": "#mnemonics"
+    },
+    {
+      "include": "#registers"
+    },
+    {
+      "include": "#customRegisterNames"
+    },
+    {
+      "include": "#potentiometers"
     },
     {
       "include": "#strings"
@@ -16,14 +29,38 @@
     "comments": {
       "patterns": [{
         "name": "comment.line.fv-1-assembly",
-        "match": "^;.+"
+        "match": ";.*"
       }]
     },
-    "keywords": {
+    "mnemonics": {
       "patterns": [{
         "name": "keyword.control.fv-1-assembly",
-        "match": "(?i)\\b(equ|mem|rda|rmpa|wra|wrap|rdax|rdfx|wrax|wrhx|wrlx|maxx|absa|mulx|log|exp|sof|and|or|xor|skp|wlds|wldr|jam|cho|nop|not|clr)\\b"
+        "match": "(?i)\\b(equ|mem|rda|rmpa|wra|wrap|rdax|ldax|rdfx|wrax|wrhx|wrlx|maxx|absa|mulx|log|exp|sof|and|or|xor|skp|wlds|wldr|jam|cho|nop|not|clr)\\b"
       }]
+    },
+    "registers": {
+      "patterns": [{
+        "name": "storage",
+        "match": "(?i)\\breg[0-9]\\b"
+      }]
+    },
+    "potentiometers": {
+      "patterns": [{
+        "name": "keyword.control",
+        "match": "(?i)\\b(POT0|POT1|POT2)\\b"
+      }]
+    },
+    "customRegisterNames": {
+      "patterns": [
+        {
+          "match" : "(?<=equ)[ \t]*([a-zA-Z0-9]*)",
+          "captures": {
+            "1": {
+              "name": "variable.name"
+            }
+          }
+        }
+      ]
     },
     "strings": {
       "name": "string.quoted.double.fv-1-assembly",
@@ -36,6 +73,5 @@
         }
       ]
     }
-  },
-  "scopeName": "source.spn"
+  }
 }
